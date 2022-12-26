@@ -1,0 +1,30 @@
+.task-list {
+    &__wrapper {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        overflow: hidden;
+
+        .task {
+            min-width: 60%;
+        }
+    }
+
+    &__create {
+        min-width: 60%;
+        margin-top: 20px;
+    }
+}
+
+.loading-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.1);
+}

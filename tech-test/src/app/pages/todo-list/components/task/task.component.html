@@ -1,0 +1,33 @@
+<mat-card>
+    <div class="task">
+        <div class="task-wrapper">
+            <div class="task-info">
+                <h3 class="task-title">{{ task.label }}</h3>
+                <div class="task-description">
+                    {{ task.description }}
+                </div>
+                <div class="task-category">
+                    Category: {{ task.category }}
+                </div>
+            </div>
+            <div class="task-actions">
+                <ng-container *ngIf="!task.done; else taskDone">
+                    <div class="task-actions__done" (click)="onDone(task.id)">
+                        <mat-checkbox color="primary" class="task-actions-checkbox"></mat-checkbox>
+                    </div>
+                    <div class="task-actions__edit" (click)="onEdit(task)">
+                        <button class="task-actions-button" mat-raised-button color="primary">Edit</button>
+                    </div>
+                    <div class="task-actions__delete" (click)="onDelete(task.id)">
+                        <button class="task-actions-button" mat-raised-button color="warn">Delete</button>
+                    </div>
+                </ng-container>
+
+                <ng-template #taskDone>
+                    <h3><b>Task done on:</b> {{ task.done }}</h3>
+                </ng-template>
+            </div>
+
+        </div>
+    </div>
+</mat-card>

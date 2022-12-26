@@ -1,0 +1,14 @@
+<div class="task-list">
+  <div class="task-list__wrapper">
+    <div class="task" *ngFor="let task of tasks$ | async">
+      <app-task [task]="task" (delete)="onDeleteTask($event)" (edit)="onEditTask($event)" (done)="onMarkAsDone($event)"></app-task>
+    </div>
+    <div class="task-list__create">
+      <button mat-raised-button color="primary" (click)="onCreateTask()">Create task</button>
+    </div>
+  </div>
+</div>
+
+<div class="loading-wrapper" *ngIf="loading$ | async">
+  <mat-spinner></mat-spinner>
+</div>
