@@ -9,9 +9,16 @@
     },
     {
       "id": 2,
-      "label": "Taxes",
+      "label": "Taxess",
       "description": "Start doing my taxes and contact my accountant jhon for advice",
       "category": "bureaucracy",
+      "done": false
+    },
+    {
+      "id": 3,
+      "label": "tryrt",
+      "description": "rtyrty",
+      "category": "tyrty",
       "done": false
     }
   ]

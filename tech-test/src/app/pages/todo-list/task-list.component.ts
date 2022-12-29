@@ -1,14 +1,14 @@
-import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
-import { Observable } from 'rxjs';
-import { EditCreateDialogComponent } from './components/edit-create-dialog/edit-create-dialog.component';
-import { Task } from './models/task.interface';
-import { TaskService } from './services/task.service';
+import { Component, OnInit } from "@angular/core";
+import { MatDialog } from "@angular/material/dialog";
+import { Observable } from "rxjs";
+import { EditCreateDialogComponent } from "./components/edit-create-dialog/edit-create-dialog.component";
+import { Task } from "./models/task.interface";
+import { TaskService } from "./services/task.service";
 
 @Component({
-  selector: 'app-task-list',
-  templateUrl: './task-list.component.html',
-  styleUrls: ['./task-list.component.scss']
+  selector: "app-task-list",
+  templateUrl: "./task-list.component.html",
+  styleUrls: ["./task-list.component.scss"],
 })
 export class TaskListComponent implements OnInit {
   public loading$: Observable<boolean>;
@@ -19,18 +19,17 @@ export class TaskListComponent implements OnInit {
     this.tasks$ = this.taskService.tasks$;
   }
 
-  ngOnInit(): void {
-    this.taskService.fetchTasks()
+  ngOnInit(): any {
+    this.taskService.fetchTasks();
   }
 
   onCreateTask(): void {
     const dialogRef = this.dialog.open(EditCreateDialogComponent);
 
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().subscribe((result) => {
       if (!result) {
         return;
       }
-
       this.taskService.createTask(result);
     });
   }
@@ -38,14 +37,13 @@ export class TaskListComponent implements OnInit {
   onEditTask(data: Task): void {
     const dialogRef = this.dialog.open(EditCreateDialogComponent, { data });
 
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().subscribe((result) => {
       if (!result) {
         return;
       }
 
       this.taskService.editTask(result);
     });
-
   }
 
   onMarkAsDone(id: number) {
@@ -53,7 +51,7 @@ export class TaskListComponent implements OnInit {
   }
 
   onDeleteTask(id: number): void {
-    this.taskService.deleteTask(id)
+    this.taskService.deleteTask(id);
+    this.taskService.fetchTasks();
   }
-
 }
